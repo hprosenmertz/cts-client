@@ -1,6 +1,6 @@
 const baseUrl = "https://cts-client.herokuapp.com/";
 
-function handleOnLoad(){
+function loadHomePage(){
     const peopleUrl = baseUrl;
 
     fetch(peopleUrl).then(function(response){
