@@ -7,7 +7,6 @@ function loadHomePage(){
         return response.json();
     }).then(function(json){
         console.log(json);
-        displayTable(json);
     }).catch(function(error){
         console.log(error);
     });
