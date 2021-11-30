@@ -30,6 +30,17 @@ function PostRequest(){
     .then((response)=> {
         console.log(response);
         document.getElementById("post").value = "";
-        handleOnLoad();
+        gotHome();
+    })
+}
+
+function gotHome(){
+    const postApiUrl = "https://cts-client.herokuapp.com/homepage.html";
+
+    fetch(postApiUrl).then(function(response){   
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+        displayPosts(json);
     })
 }
