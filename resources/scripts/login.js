@@ -30,8 +30,8 @@ function PostRequest(){
         console.log(response);
         console.log(username);
         console.log(password);
-        //goHome();
-        document.getElementById("user").value = "";
+        goHome();
+        //document.getElementById("user").value = "";
         
     })
 }
