@@ -1,9 +1,8 @@
-const baseUrl = "https://cts-client.herokuapp.com/";
+const baseUrl = "https://cts-client.herokuapp.com/homepage.html";
 
 function loadHomePage(){
-    const peopleUrl = baseUrl;
 
-    fetch(peopleUrl)
+    fetch(baseUrl)
     // .then(function(response){
     //     return response.json();
     // }).then(function(json){
