@@ -1,11 +1,20 @@
+function handleOnLoad(){
+    const postApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
 
+    fetch(postApiUrl).then(function(response){   
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+        displayPosts(json);
+    })
+}
 function handleLogin(){
     PostRequest();
 }
 
 function PostRequest(){
     const userApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
-    let value = document.getElementById("abcd").value; //gets what user inputted 
+    let value = document.getElementById("value").value; //gets what user inputted 
     fetch(userApiUrl, {
         method: "POST",
         headers: {
