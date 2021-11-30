@@ -78,3 +78,15 @@ function fadeIn(el, display) {
         }
     })();
 };
+
+
+function loadCustReview(){
+    fetch("https://cts-client.herokuapp.com/customer-review.html")
+    .then(function(response){
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+    }).catch(function(error){
+        console.log(error);
+    });
+};
