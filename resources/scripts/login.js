@@ -22,8 +22,8 @@ function PostRequest(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            "username": username,
-            "password": password
+            clientEmail: username,
+            clientPass: password
         })
     })
     .then((response)=> {
