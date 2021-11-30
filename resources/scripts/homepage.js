@@ -5,7 +5,7 @@ function loadHomePage(){
 
     fetch(peopleUrl)
     
-    
+    document.write("file:///Users/hannarosenmertz/Desktop/Source/Repos/cts/client/homepage.html");
     // .then(function(response){
     //     return response.json();
     // }).then(function(json){
