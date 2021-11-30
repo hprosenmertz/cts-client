@@ -30,6 +30,7 @@ function PostRequest(){
         console.log(response);
         console.log(username);
         console.log(password);
+        goHome();
         document.getElementById("post").value = "";
         
     })
