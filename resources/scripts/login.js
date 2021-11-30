@@ -4,9 +4,10 @@ function handleLogin(){
 }
 
 function PostRequest(){
-    const userApiUrl = "https://cts-api-321.herokuapp.com/api/Client/Login";
-    let username = document.getElementById("username").value; //gets what user inputted 
-    let password = document.getElementById("password").value;
+    const userApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
+    let value = document.getElementById("value").value; //gets what user inputted 
+    const username;
+    const password;
     fetch(userApiUrl, {
         method: "POST",
         headers: {
