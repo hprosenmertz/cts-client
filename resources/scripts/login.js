@@ -5,7 +5,6 @@ function handleOnLoad(){
         return response.json();
     }).then(function(json){
         console.log(json);
-        displayPosts(json);
     })
 }
 function handleLogin(){
@@ -29,18 +28,19 @@ function PostRequest(){
     })
     .then((response)=> {
         console.log(response);
+        console.log(username);
+        console.log(password);
         document.getElementById("post").value = "";
-        gotHome();
+        
     })
 }
 
-function gotHome(){
+function goHome(){
     const postApiUrl = "https://cts-client.herokuapp.com/homepage.html";
 
     fetch(postApiUrl).then(function(response){   
         return response.json();
     }).then(function(json){
         console.log(json);
-        displayPosts(json);
     })
 }
