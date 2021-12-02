@@ -33,23 +33,10 @@ function PostRequest(){
         } else {
             alert("Success!");
             localStorage.setItem("employee", num);
-            window.location.href = "http://www.w3schools.com";
+            window.location.href = "https://cts-client.herokuapp.com/homepage.html";
         }
         
     })
     .catch(error => console.log(error));
 }
 
-function EmployeeHomePage(){
-
-    //fix this
-    console.log("made it");
-    const empHome = "https://cts-client.herokuapp.com/homepage.html";
-
-    fetch(empHome).then(function(response){   
-        return response.json();
-    }).then(function(json){
-        console.log(json);
-    })
-
-}
