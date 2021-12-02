@@ -33,7 +33,7 @@ function PostRequest(){
         } else {
             alert("Success!");
             localStorage.setItem("employee", num);
-            window.location.href = "https://cts-client.herokuapp.com/homepage.html";
+            window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
         }
         
     })

@@ -12,7 +12,14 @@ list.addEventListener('click', function(ev) {
 
 
 function handleOnLoad(){
-    DisplayEvents();
+  DisplayEvents();
+  const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
+
+  fetch(postApiUrl).then(function(response){   
+      return response.json();
+  }).then(function(json){
+      console.log(json);
+  })
     CheckList();
   
 }
@@ -27,6 +34,9 @@ function DisplayEvents(){
   json.forEach(text => {
       html = "<div class=\"box\">";
       html += "<div id=\"myDIV\" class=\"header\">";
+      html += "<h3 style=\"margin:5px\">Event To Do List</h3>"
+      html += "</div>"
+      html += "</div>"
  
       
   });

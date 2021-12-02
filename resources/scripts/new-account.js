@@ -30,7 +30,8 @@ function AddAccount(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            clientName: firstName,
+            clientFirstName: firstName,
+            clientLastName: lastName,
             clientEmail: username,
             clientPass: password,
             phone: phone
