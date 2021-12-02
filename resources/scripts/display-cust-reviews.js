@@ -43,21 +43,35 @@ function displayPosts(json){
 
     let html = "<div class =\"container\">";
 
-    json.forEach(text => {
-        html += "<p><b>Review: </b>" + text.text + "</p>";
-   // html += "<form onsubmit = return false; method = edit> ";
-            html += "<input id = \"edit"+text.postID+"\" type=text/>";
-            html += "<button onclick=handleOnEdit("+text.postID+")>Edit</button>";
-     //   html+= "</form>";
-        //html += "<form onsubmit = return false; method = delete> ";
-            html+= "<button onclick=DeletePost("+text.postID+")>Delete</button>"
-        //html+= "</form>";
+    json.forEach(review => {
+        html += "<p><b>Review: </b>" + review.text + "</p>";
     });
     
     html += "</div>";
 
     document.getElementById("prevposts").innerHTML = html;
 }
+
+// use for new review submission
+// function AddPost(){
+//     const postApiUrl = "https://localhost:5001/api/Post";
+//     let postText = document.getElementById("post").value; //gets what user inputted 
+//     fetch(postApiUrl, {
+//         method: "POST",
+//         headers: {
+//             "Accept": 'application/json',
+//             "Content-Type": 'application/json'
+//         },
+//         body: JSON.stringify({
+//             Text: postText
+//         })
+//     })
+//     .then((response)=> {
+//         console.log(response);
+//         document.getElementById("post").value = "";
+//         handleOnLoad();
+//     })
+// }
 
 
 

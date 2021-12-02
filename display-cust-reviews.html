@@ -14,7 +14,7 @@
         <link href="./resources/css/packages.css" rel="stylesheet" />
     </head>
     
-    <body>
+    <body onload="handleOnLoad()">
         <script type = "text/JavaScript" src="resources/scripts/display-cust-reviews.js"></script>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="./homepage.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./display-cust-reviews.html">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="./packages.html">Package Offers</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Customer Reviews</a></li>
                         <li class="nav-item"><a class="nav-link" href="./login.html">Login/Sign Up</a></li>
@@ -33,103 +33,7 @@
             </div>
         </nav>
         <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="text-center my-5">
-                            <h2 class="display-5 fw-bolder text-white mb-2">Real Reviews from Real Customers</h2>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <!-- <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Features section-->
-        
-        <!-- Pricing section-->
-        <section class="bg-light py-5 border-bottom">
-            <div class="container px-5 my-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bolder">Customer Event Reviews</h2>
-                    <p class="lead mb-0">Call for more information or to book at (555)-555-5555</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <!-- Pricing card free-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <!-- <div class="small text-uppercase fw-bold text-muted">Free</div> -->
-                                <div class="mb-3">
-                                    <span class="display-6 fw-bold">Package A</span>
-                                    <span class="text-muted"></span>
-                                </div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Tent
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Cooler
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Food
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Drinks
-                                    </li>
-                                </ul>
-                                <p> <strong> Price:</strong> $250 </p>
-                                <!-- <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pricing card pro-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-
-                                <div class="mb-3">
-                                    <span class="display-6 fw-bold">Package B</span>
-                                </div>
-                                <ul class="list-unstyled mb-4">
-                                 
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Tent
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Cooler
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Food
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Drinks
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Music (Speakers)
-                                    </li>
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Grill
-                                    </li>
-                                </ul>
-                                <p> <strong> Price:</strong> $500 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pricing card enterprise-->
+       
                     
                 </div>
             </div>
