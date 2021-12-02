@@ -33,7 +33,7 @@ function PostRequest(){
         } else {
             alert("Success!");
             localStorage.setItem("employee", num);
-            EmployeeHomePage();
+            window.location.href = "http://www.w3schools.com";
         }
         
     })
