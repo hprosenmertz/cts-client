@@ -43,6 +43,7 @@ function PostRequest(){
 function EmployeeHomePage(){
 
     //fix this
+    console.log("made it");
     const empHome = "https://cts-api-321.herokuapp.com/api/Client/login";
 
     fetch(empHome).then(function(response){   
