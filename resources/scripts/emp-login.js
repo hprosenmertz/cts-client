@@ -1,5 +1,5 @@
 function handleOnLoad(){
-    const postApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
+    const postApiUrl = "https://cts-api-321.herokuapp.com/api/Employee/";
 
     fetch(postApiUrl).then(function(response){   
         return response.json();
@@ -12,7 +12,7 @@ function handleLogin(){
 }
 
 function PostRequest(){
-    const userApiUrl = "https://cts-api-321.herokuapp.com/api/Client/login";
+    const userApiUrl = "https://cts-api-321.herokuapp.com/api/Employee/emplogin";
     let password = document.getElementById("password").value; //gets what user inputted 
     let username = document.getElementById("username").value;
     fetch(userApiUrl, {
@@ -22,29 +22,20 @@ function PostRequest(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            clientEmail: username,
-            clientPass: password
+            employeeEmail: username,
+            employeePass: password
         })
     })
     .then((response)=> response.json()).then(num =>{
         if (num === 0){
             alert("Incorrect Login");
-            localStorage.setItem("client",0);
+            localStorage.setItem("employee",0);
         } else {
             alert("Success!");
-            localStorage.setItem("client", num);
+            localStorage.setItem("employee", num);
+            //goHome();
         }
         
     })
     .catch(error => console.log(error));
-}
-
-function goHome(){
-    const postApiUrl = "https://cts-client.herokuapp.com/homepage.html";
-
-    fetch(postApiUrl).then(function(response){   
-        return response.json();
-    }).then(function(json){
-        console.log(json);
-    })
 }
