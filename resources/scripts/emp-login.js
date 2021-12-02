@@ -33,9 +33,22 @@ function PostRequest(){
         } else {
             alert("Success!");
             localStorage.setItem("employee", num);
-            //goHome();
+            EmployeeHomePage();
         }
         
     })
     .catch(error => console.log(error));
+}
+
+function EmployeeHomePage(){
+
+    //fix this
+    const empHome = "https://cts-api-321.herokuapp.com/api/Client/login";
+
+    fetch(empHome).then(function(response){   
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+    })
+
 }
