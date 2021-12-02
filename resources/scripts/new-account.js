@@ -44,6 +44,12 @@ function AddAccount(){
         } else {
             alert("Success, account created!");
             localStorage.setItem("client", num);
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+            document.getElementById("phone").value = "";
+            handleOnLoad();
         }
         
     })
