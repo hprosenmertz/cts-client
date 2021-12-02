@@ -44,7 +44,7 @@ function EmployeeHomePage(){
 
     //fix this
     console.log("made it");
-    const empHome = "https://cts-api-321.herokuapp.com/api/Client/login";
+    const empHome = "https://cts-client.herokuapp.com/homepage.html";
 
     fetch(empHome).then(function(response){   
         return response.json();
