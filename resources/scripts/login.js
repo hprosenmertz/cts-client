@@ -1,6 +1,6 @@
 function handleOnLoad(){
-    const postApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
-
+    //const postApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
+    const postApiUrl = "https://localhost:5001/api/Client/"
     fetch(postApiUrl).then(function(response){   
         return response.json();
     }).then(function(json){
@@ -12,7 +12,8 @@ function handleLogin(){
 }
 
 function PostRequest(){
-    const userApiUrl = "https://cts-api-321.herokuapp.com/api/Client/login";
+    //const userApiUrl = "https://cts-api-321.herokuapp.com/api/Client/login";
+    const userApiUrl = "https://localhost:5001/api/Client/login";
     let password = document.getElementById("password").value; //gets what user inputted 
     let username = document.getElementById("username").value;
     fetch(userApiUrl, {
