@@ -1,7 +1,7 @@
 function handleOnLoad(){
 
-    //const apiUrl = "https://cts-api-321.herokuapp.com/api/Client/"; 
-    const apiUrl = "https://localhost:5001/api/Client";
+    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    //const apiUrl = "https://localhost:5001/api/Client";
     fetch(apiUrl).then(function(response){   
         return response.json();
     }).then(function(json){
@@ -70,8 +70,8 @@ function AddAccount(){
 }
 
 function AddClient(){
-    //const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
-    const apiUrl = "https://localhost:5001/api/Client";
+    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    //const apiUrl = "https://localhost:5001/api/Client";
     let username = document.getElementById("email").value;
     let password = document.getElementById("password").value; //gets what user inputted 
     let firstName = document.getElementById("fName").value;
