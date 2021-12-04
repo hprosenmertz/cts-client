@@ -69,8 +69,8 @@ function PostRequest(json2){
             console.log("1" + clientID);
             sendClientID(clientID);
             console.log("info: " + clientInfo);
-           window.location.href = "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/customer-review.html";
-   // window.location.href = "https://cts-client.herokuapp.com/customer-review.html";
+          // window.location.href = "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/customer-review.html";
+        window.location.href = "https://cts-client.herokuapp.com/customer-review.html";
 
             // module.exports = {Client};
         }
