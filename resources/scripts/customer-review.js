@@ -90,3 +90,32 @@ function loadCustReview(){
         console.log(error);
     });
 };
+
+function HandleOnSubmit(){
+    AddReview();
+}
+
+function AddReview(){
+    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    //const apiUrl = "https://localhost:5001/api/Client";
+    let food = document.getElementById("foodRating").value;
+    let music = document.getElementById("musicRating").value; //gets what user inputted 
+    let equipment = document.getElementById("equipmentRating").value;
+    let overall = document.getElementById("overallRating").value;
+    let text = document.getElementById("text").value
+
+    fetch(apiUrl, {
+        method: "POST",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({
+            foodRating: food,
+            musicRating: music,
+            equipmentRating: equipment,
+            overallRating: overall,
+            tect : text
+        })
+    })
+}
