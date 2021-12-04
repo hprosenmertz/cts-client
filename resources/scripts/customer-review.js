@@ -96,8 +96,8 @@ function HandleOnSubmit(){
 }
 
 function AddReview(){
-    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
-    //const apiUrl = "https://localhost:5001/api/Client";
+    const apiUrl = "https://cts-api-321.herokuapp.com/api/Review"; 
+    //const apiUrl = "https://localhost:5001/api/Review";
     let food = document.getElementById("foodRating").value;
     let music = document.getElementById("musicRating").value; //gets what user inputted 
     let equipment = document.getElementById("equipmentRating").value;
