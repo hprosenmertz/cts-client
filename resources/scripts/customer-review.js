@@ -86,6 +86,7 @@ function loadCustReview(){
         return response.json();
     }).then(function(json){
         console.log(json);
+        displayIDs(json);
     }).catch(function(error){
         console.log(error);
     });
@@ -93,6 +94,18 @@ function loadCustReview(){
 
 function HandleOnSubmit(){
     AddReview();
+}
+
+function displayIDs(json){
+
+    let html = "<div class =\"container\">";
+
+    json.forEach(review => {
+        html += "<p><b>Review: </b>" + review.eventId + "</p>";
+        html += "<p>Testing</p>";
+    });
+    
+    html += "</div>";
 }
 
 function AddReview(){
