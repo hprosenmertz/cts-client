@@ -44,13 +44,21 @@ function displayPosts(json){
     let html = "<div class =\"container\">";
 
     json.forEach(review => {
+       
         html += "<p><b>Review: </b>" + review.text + "</p>";
-        html += "<p>Testing</p>";
+        html += "<u>Ratings</u></p>";
+        html += "<p>Overall Experience: " + review.overallRating + "</p>";
+        html += "<p>Food & Drinks: " + review.foodRating + "</p>";
+        html += "<p>Music: " + review.musicRating + "</p>";
+        html += "<p>Equipment: " + review.equipmentRating + "</p>";
+
+        
+
     });
     
-    html += "</div>";
+    html += "</style> </div>";
 
-   // document.getElementById("prevposts").innerHTML = html;
+   document.getElementById("reviews").innerHTML = html;
 }
 
 // use for new review submission
