@@ -3,58 +3,58 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-stylish-portfolio/blob/master/LICENSE)
 */
-window.addEventListener('DOMContentLoaded', event => {
+// window.addEventListener('DOMContentLoaded', event => {
 
-    const sidebarWrapper = document.getElementById('sidebar-wrapper');
-    let scrollToTopVisible = false;
-    // Closes the sidebar menu
-    const menuToggle = document.body.querySelector('.menu-toggle');
-    menuToggle.addEventListener('click', event => {
-        event.preventDefault();
-        sidebarWrapper.classList.toggle('active');
-        _toggleMenuIcon();
-        menuToggle.classList.toggle('active');
-    })
+//     const sidebarWrapper = document.getElementById('sidebar-wrapper');
+//     let scrollToTopVisible = false;
+//     // Closes the sidebar menu
+//     const menuToggle = document.body.querySelector('.menu-toggle');
+//     menuToggle.addEventListener('click', event => {
+//         event.preventDefault();
+//         sidebarWrapper.classList.toggle('active');
+//         _toggleMenuIcon();
+//         menuToggle.classList.toggle('active');
+//  })
 
-    // Closes responsive menu when a scroll trigger link is clicked
-    var scrollTriggerList = [].slice.call(document.querySelectorAll('#sidebar-wrapper .js-scroll-trigger'));
-    scrollTriggerList.map(scrollTrigger => {
-        scrollTrigger.addEventListener('click', () => {
-            sidebarWrapper.classList.remove('active');
-            menuToggle.classList.remove('active');
-            _toggleMenuIcon();
-        })
-    });
+//     // Closes responsive menu when a scroll trigger link is clicked
+//     var scrollTriggerList = [].slice.call(document.querySelectorAll('#sidebar-wrapper .js-scroll-trigger'));
+//     scrollTriggerList.map(scrollTrigger => {
+//         scrollTrigger.addEventListener('click', () => {
+//             sidebarWrapper.classList.remove('active');
+//             menuToggle.classList.remove('active');
+//             _toggleMenuIcon();
+//         })
+//     });
 
-    function _toggleMenuIcon() {
-        const menuToggleBars = document.body.querySelector('.menu-toggle > .fa-bars');
-        const menuToggleTimes = document.body.querySelector('.menu-toggle > .fa-times');
-        if (menuToggleBars) {
-            menuToggleBars.classList.remove('fa-bars');
-            menuToggleBars.classList.add('fa-times');
-        }
-        if (menuToggleTimes) {
-            menuToggleTimes.classList.remove('fa-times');
-            menuToggleTimes.classList.add('fa-bars');
-        }
-    }
+//     function _toggleMenuIcon() {
+//         const menuToggleBars = document.body.querySelector('.menu-toggle > .fa-bars');
+//         const menuToggleTimes = document.body.querySelector('.menu-toggle > .fa-times');
+//         if (menuToggleBars) {
+//             menuToggleBars.classList.remove('fa-bars');
+//             menuToggleBars.classList.add('fa-times');
+//         }
+//         if (menuToggleTimes) {
+//             menuToggleTimes.classList.remove('fa-times');
+//             menuToggleTimes.classList.add('fa-bars');
+//         }
+//     }
 
     // Scroll to top button appear
-    document.addEventListener('scroll', () => {
-        const scrollToTop = document.body.querySelector('.scroll-to-top');
-        if (document.documentElement.scrollTop > 100) {
-            if (!scrollToTopVisible) {
-                fadeIn(scrollToTop);
-                scrollToTopVisible = true;
-            }
-        } else {
-            if (scrollToTopVisible) {
-                fadeOut(scrollToTop);
-                scrollToTopVisible = false;
-            }
-        }
-    })
-})
+//     document.addEventListener('scroll', () => {
+//         const scrollToTop = document.body.querySelector('.scroll-to-top');
+//         if (document.documentElement.scrollTop > 100) {
+//             if (!scrollToTopVisible) {
+//                 fadeIn(scrollToTop);
+//                 scrollToTopVisible = true;
+//             }
+//         } else {
+//             if (scrollToTopVisible) {
+//                 fadeOut(scrollToTop);
+//                 scrollToTopVisible = false;
+//             }
+//         }
+//     })
+// })
 
 function fadeOut(el) {
     el.style.opacity = 1;
@@ -81,7 +81,7 @@ function fadeIn(el, display) {
 
 
 function loadCustReview(){
-    fetch("https://cts-client.herokuapp.com/customer-review.html")
+    fetch("https://cts-api-321.herokuapp.com/api/Review")
     .then(function(response){
         return response.json();
     }).then(function(json){
@@ -96,12 +96,12 @@ function HandleOnSubmit(){
 }
 
 function AddReview(){
-    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
-    //const apiUrl = "https://localhost:5001/api/Client";
-    let food = document.getElementById("foodRating").value;
-    let music = document.getElementById("musicRating").value; //gets what user inputted 
-    let equipment = document.getElementById("equipmentRating").value;
-    let overall = document.getElementById("overallRating").value;
+    const apiUrl = "https://cts-api-321.herokuapp.com/api/Review"; 
+    //const apiUrl = "https://localhost:5001/api/Review";
+    let food = document.getElementById("food").value;
+    let music = document.getElementById("music").value; //gets what user inputted 
+    let equipment = document.getElementById("equipment").value;
+    let overall = document.getElementById("overall").value;
     let text = document.getElementById("text").value
 
     fetch(apiUrl, {
@@ -115,7 +115,16 @@ function AddReview(){
             musicRating: music,
             equipmentRating: equipment,
             overallRating: overall,
-            tect : text
+            text : text
         })
+    })
+    .then((response)=> {
+        console.log(response);
+        console.log(text);
+        document.getElementById("food").value = "";
+        document.getElementById("music").value = "";
+        document.getElementById("equipment").value = "";
+        document.getElementById("overall").value = "";
+        document.getElementById("text").value = "";
     })
 }
