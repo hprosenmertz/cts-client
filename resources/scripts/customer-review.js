@@ -80,14 +80,16 @@ function fadeIn(el, display) {
 };
 
 
+
 function loadCustReview(){
     fetch("https://cts-api-321.herokuapp.com/api/Review")
     .then(function(response){
         return response.json();
     }).then(function(json){
         console.log(json);
+        console.log(clientInfo + "client");
         displayIDs(json);
-        GetClientInfo();
+      //  GetClientInfo();
     }).catch(function(error){
         console.log(error);
     });
