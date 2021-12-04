@@ -18,7 +18,11 @@
         <link href="./resources/css/customer-review.css" rel="stylesheet" />
     </head>
     <body id="page-top" onload ="loadCustReview()">
+        <script type = "text/JavaScript" src="resources/scripts/login.js"></script>
         <script type = "text/JavaScript" src="resources/scripts/customer-review.js"></script>
+        
+        
+        
         <!-- Navigation-->
         <!-- <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
@@ -60,7 +64,7 @@
         <div class="mb-3" id = "reviewbox">
             <label for="exampleFormControlInput1" class="form-label">Event Type</label>
  <!-- Use js to put in event type at top of review form-->
-            <input class="form-control" type="text" value="Sample Package" aria-label="readonly input example" readonly>
+            <!-- <input class="form-control" type="text" value="GetPackage()" aria-label="readonly input example" readonly> -->
          
             <label for="exampleFormControlInput2" class="form-label">Employee</label>
             <input class="form-control" type="text" value="Sample Employee Input" aria-label="readonly input example" readonly>
@@ -115,6 +119,7 @@
       <button onclick=HandleOnSubmit()>Submit Review</button>
 
         </div>
+        <div id="reviews"></div>
     <div class="mb-3">
       
     </div>

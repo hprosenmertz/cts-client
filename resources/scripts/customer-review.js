@@ -87,6 +87,7 @@ function loadCustReview(){
     }).then(function(json){
         console.log(json);
         displayIDs(json);
+        GetClientInfo();
     }).catch(function(error){
         console.log(error);
     });
@@ -96,17 +97,42 @@ function HandleOnSubmit(){
     AddReview();
 }
 
+function GetClientInfo(){
+    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    //const apiUrl = "https://localhost:5001/api/Client";
+    fetch(apiUrl).then(function(response){   
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+     
+    })
+}
+
+// function GetClientID(json){
+//     let id = JSON.parse(clientId);
+//     console.log("made it here" + id);
+// }
+
+
 function displayIDs(json){
+
+    // alert(clientInfo);
+    console.log(clientInfo+ "client");
 
     let html = "<div class =\"container\">";
 
     json.forEach(review => {
-        html += "<p><b>Review: </b>" + review.eventId + "</p>";
-        html += "<p>Testing</p>";
+        html += "<p><b>ID: </b>" + review.eventId + "</p>";
+        html += "<p><b>Client ID: </b>" + review.eventId + "</p>";
+            html += "<p><b>Package: </b>" + review.eventId + "</p>";
+        
     });
     
     html += "</div>";
+    document.getElementById("reviews").innerHTML = html;
 }
+
+
 
 function AddReview(){
     const apiUrl = "https://cts-api-321.herokuapp.com/api/Review"; 
@@ -116,6 +142,7 @@ function AddReview(){
     let equipment = document.getElementById("equipment").value;
     let overall = document.getElementById("overall").value;
     let text = document.getElementById("text").value
+    
 
     fetch(apiUrl, {
         method: "POST",
