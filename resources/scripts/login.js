@@ -1,7 +1,7 @@
 
 
-var clientInfo = "2";
-localStorage.setItem("clientInfo", clientInfo);
+// var clientInfo = "2";
+// localStorage.setItem("clientInfo", clientInfo);
 
 function handleOnLoad(){
     const postApiUrl = "https://cts-api-321.herokuapp.com/api/Client/";
@@ -56,13 +56,14 @@ function PostRequest(json2){
             console.log(client.clientEmail);
             console.log(username);
                     if(client.clientEmail === username){
-                           clientID = client.clientID.toString();
+                           sessionStorage.clientEmail = client.clientEmail;
                        }
                    });
-           console.log("here");
-           console.log(clientID);
-            clientInfo = clientID;
-         window.location.href = "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/customer-review.html"; 
+           console.log("session storage");
+           console.log(sessionStorage.clientEmail);
+            // clientInfo = clientID;
+            // localStorage.setItem("clientInfo", clientInfo);
+            window.location.href = "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/customer-review.html"; 
         
         console.log("this one right here");
   
@@ -111,14 +112,45 @@ function loadCustReview(){
         return response.json();
     }).then(function(json){
         console.log(json);
-        var clientInfo2 = localStorage.getItem("clientInfo");
-        console.log("asrjdfbenrkjg "+ clientInfo2);
-        displayIDs(json, clientInfo2);
+       // var clientInfo2 = localStorage.getItem("clientInfo");
+        console.log("asrjdfbenrkjg "+ sessionStorage.clientEmail);
+        var clientEmail = sessionStorage.clientEmail;
+        console.log("dasjfnadshjkf 22" + clientEmail);
+        var id = GetClientData();
+        console.log("ckient id:" + id);
+        displayIDs(json, clientEmail);
   
     }).catch(function(error){
         console.log(error);
     });
 };
+
+function GetClientData(){
+    console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
+   // const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    const apiUrl = "https://localhost:5001/api/Client";
+    fetch(apiUrl).then(function(response){   
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+        var id = GetClientID(json);
+       
+    
+    })
+}
+
+function GetClientID(json){
+    var json = GetClientData();
+    var id;
+    console.log("this one yes" + sessionStorage.clientEmail);
+    json.forEach(client => {
+     console.log("abcdef" + client.clientEmail);
+             if(client.clientEmail === sessionStorage.clientEmail){
+                    id = client.clientID;
+                }
+     });
+     return id;
+}
 
 function HandleOnSubmit(){
     AddReview();
@@ -126,26 +158,28 @@ function HandleOnSubmit(){
 
 
 
-function displayIDs(json, clientID){
-
-    // alert(clientInfo);
-    console.log(clientID + "client");
-
+function displayIDs(json, clientEmail){
 
     let html = "<div class =\"container\">";
+   // console.log("review.clientEmail" + review.clientEmail);
+    console.log("clientEmail" + clientEmail);
 
     json.forEach(review => {
+        console.log("review.clientEmail" + review.clientEmail);
+    console.log("clientEmail" + clientEmail);
+        if(review.clientEmail === clientEmail){
+            html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +review.eventId +"</label>";
+            html += "<p> Show Up </p";
+        }
         console.log(review.eventId + "eventId");
-    
-        html += "<p><b>ID: </b>" + review.eventId + "</p>";
-        html += "<p><b>Client Info: </b>" + clientID + "</p>";
-    
+
         
     });
     
     html += "</div>";
     document.getElementById("reviews").innerHTML = html;
 }
+
 
 
 
