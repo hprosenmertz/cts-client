@@ -28,47 +28,47 @@
 //     });
 // })
 
-function handleOnLoad(){
-    const ApiUrl = "http://cts-api-321.herokuapp.com/api/Review";
+// function handleOnLoad(){
+//     const ApiUrl = "http://cts-api-321.herokuapp.com/api/Review";
 
-    fetch(ApiUrl).then(function(response){   
-        return response.json();
-    }).then(function(json){
-        console.log(json);
-        displayPosts(json);
-    })
-}
+//     fetch(ApiUrl).then(function(response){   
+//         return response.json();
+//     }).then(function(json){
+//         console.log(json);
+//         displayPosts(json);
+//     })
+// }
 
-function displayPosts(json){
-    let html = '';
+// function displayPosts(json){
+//     let html = '';
 
-    json.forEach(review => {
-        html += "<div class =\"container2\"> ";
-        html += "<p><b>Review: </b>" + review.text + " </p>";
-        html += "<u>Ratings</u>";
-        html += "<p class=\"tab\">Overall Experience: " +  NumStars(review.overallRating)+ "</p>";
-        html += "<p class=\"tab\">Food & Drinks: " + NumStars(review.foodRating) + "</p>";
-        html += "<p class=\"tab\">Music: " + NumStars(review.musicRating) + "</p>";
-        html += "<p class=\"tab\">Equipment:" + NumStars(review.equipmentRating) + "</span></p>";
-        html += "</div>";
-        console.log(html);
+//     json.forEach(review => {
+//         html += "<div class =\"container2\"> ";
+//         html += "<p><b>Review: </b>" + review.text + " </p>";
+//         html += "<u>Ratings</u>";
+//         html += "<p class=\"tab\">Overall Experience: " +  NumStars(review.overallRating)+ "</p>";
+//         html += "<p class=\"tab\">Food & Drinks: " + NumStars(review.foodRating) + "</p>";
+//         html += "<p class=\"tab\">Music: " + NumStars(review.musicRating) + "</p>";
+//         html += "<p class=\"tab\">Equipment:" + NumStars(review.equipmentRating) + "</span></p>";
+//         html += "</div>";
+//         console.log(html);
         
 
-    });
+//     });
     
-   document.getElementById("reviews").innerHTML = html;
-}
+//    document.getElementById("reviews").innerHTML = html;
+// }
 
-function NumStars(rating){
+// function NumStars(rating){
     
-    var stars='';
+//     var stars='';
 
-    for (let i = 0; i < rating; i++) {
-        stars += "<span style=\"font-size:150%;color:black;\">&starf;</span>";
-      }
-      return stars;
+//     for (let i = 0; i < rating; i++) {
+//         stars += "<span style=\"font-size:150%;color:black;\">&starf;</span>";
+//       }
+//       return stars;
 
-}
+// }
 
 // use for new review submission
 // function AddPost(){
