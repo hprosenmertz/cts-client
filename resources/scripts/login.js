@@ -244,8 +244,8 @@ function AddReview(){
     let equipment = document.getElementById("equipment").value;
     let overall = document.getElementById("overall").value;
     let text = document.getElementById("text").value
-    var clientid = sessionStorage.clientID;
-    var eventID = sessionStorage.eventId;
+    var clientId = sessionStorage.clientID;
+    var eventId = sessionStorage.eventId;
 
     fetch(apiUrl, {
         method: "POST",
@@ -254,8 +254,8 @@ function AddReview(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            clientId: clientid,
-            eventId : eventID,
+            clientId: clientId,
+            eventId : eventId,
             foodRating: food,
             musicRating: music,
             equipmentRating: equipment,
@@ -272,6 +272,6 @@ function AddReview(){
         document.getElementById("overall").value = "";
         document.getElementById("text").value = "";
     })
-    window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
+    window.location.href = "https://cts-client.herokuapp.com/display-cust-reviews.html";
 }
 
