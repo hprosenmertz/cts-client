@@ -65,10 +65,6 @@ function PostRequest(json2){
             // localStorage.setItem("clientInfo", clientInfo);
            // window.location.href = "file:///Users/treyrush/Desktop/cts/cts-client/customer-review.html"; 
         
-        console.log("this one right here");
-  
-
-            console.log("info2: " + clientInfo);
              window.location.href = "https://cts-client.herokuapp.com/customer-review.html";
         }
         
