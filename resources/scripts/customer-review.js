@@ -106,7 +106,7 @@ function GetClientInfo(){
         return response.json();
     }).then(function(json){
         console.log(json);
-     
+        
     })
 }
 
@@ -175,4 +175,5 @@ function AddReview(){
         document.getElementById("overall").value = "";
         document.getElementById("text").value = "";
     })
+    window.location.href = "https://cts-client.herokuapp.com/display-cust-reviews.html";
 }
