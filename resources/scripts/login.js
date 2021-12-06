@@ -187,6 +187,7 @@ function GetClientID(json){
                     id = client.clientID;
                 }
      });
+     sessionStorage.clientID = id;
      return id;
 }
 
@@ -241,7 +242,8 @@ function AddReview(){
     let equipment = document.getElementById("equipment").value;
     let overall = document.getElementById("overall").value;
     let text = document.getElementById("text").value
-    
+    var clientid = sessionStorage.clientID;
+    var eventID = sessionStorage.eventId;
 
     fetch(apiUrl, {
         method: "POST",
@@ -250,6 +252,8 @@ function AddReview(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
+            clientId: clientid,
+            eventId : eventID,
             foodRating: food,
             musicRating: music,
             equipmentRating: equipment,
@@ -266,5 +270,6 @@ function AddReview(){
         document.getElementById("overall").value = "";
         document.getElementById("text").value = "";
     })
+    window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
 }
 

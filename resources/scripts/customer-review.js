@@ -159,6 +159,7 @@ function AddReview(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
+            
             foodRating: food,
             musicRating: music,
             equipmentRating: equipment,
