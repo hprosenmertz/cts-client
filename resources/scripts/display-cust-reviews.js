@@ -29,7 +29,7 @@
 // })
 
 function handleOnLoad(){
-    const ApiUrl = "https://cts-api-321.herokuapp.com/api/Review";
+    const ApiUrl = "https://cts-api-321.herokuapp.com/api/Review/";
 
     fetch(ApiUrl).then(function(response){   
         return response.json();
