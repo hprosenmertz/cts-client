@@ -155,7 +155,18 @@ h6, .h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0em;
+}
+
+p.firstpar {
+  margin-top: 0;
+  text-indent: 2em;
+  padding: 0 5px 0 5px;
+}
+p.nextpar {
+  margin-top: -1em;
+  text-indent: 2em;
+  padding: 0 5px 0 5px;
 }
 
 abbr[title],
@@ -626,6 +637,7 @@ progress {
 }
 
 .container,
+.container2,
 .container-fluid,
 .container-xxl,
 .container-xl,
@@ -634,6 +646,7 @@ progress {
 .container-sm {
   width: 100%;
   background-color: white;
+  border: 10px solid darkred;
   color: black;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
@@ -3957,6 +3970,10 @@ textarea.form-control-lg {
 .nav-fill .nav-item .nav-link,
 .nav-justified .nav-item .nav-link {
   width: 100%;
+}
+
+.tab{
+  margin-left: 40px;
 }
 
 .tab-content > .tab-pane {

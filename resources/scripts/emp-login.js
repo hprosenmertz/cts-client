@@ -5,10 +5,11 @@ function handleOnLoad(){
         return response.json();
     }).then(function(json){
         console.log(json);
+        handleLogin(json);
     })
 }
-function handleLogin(){
-    PostRequest();
+function handleLogin(json2){
+    PostRequest(json2);
 }
 
 function PostRequest(){
@@ -33,7 +34,24 @@ function PostRequest(){
         } else {
             alert("Success!");
             localStorage.setItem("employee", num);
-            window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
+           // window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
+        
+           var empID;
+           json2.forEach(employee => {
+               
+               console.log("this one");
+            console.log(employee.employeeId);
+            console.log(employee.employeeEmail);
+            console.log(username);
+                    if(client.clientEmail === username){
+                           sessionStorage.clientEmail = client.clientEmail;
+                       }
+                   });
+           console.log("session storage");
+           console.log(sessionStorage.clientEmail);
+        
+        
+        
         }
         
     })

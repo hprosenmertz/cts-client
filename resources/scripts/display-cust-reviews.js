@@ -40,25 +40,34 @@ function handleOnLoad(){
 }
 
 function displayPosts(json){
-
-    let html = "<div class =\"container\">";
+    let html = '';
 
     json.forEach(review => {
-       
-        html += "<p><b>Review: </b>" + review.text + "</p>";
-        html += "<u>Ratings</u></p>";
-        html += "<p>Overall Experience: " + review.overallRating + "</p>";
-        html += "<p>Food & Drinks: " + review.foodRating + "</p>";
-        html += "<p>Music: " + review.musicRating + "</p>";
-        html += "<p>Equipment: " + review.equipmentRating + "</p>";
-
+        html += "<div class =\"container2\"> ";
+        html += "<p><b>Review: </b>" + review.text + " </p>";
+        html += "<u>Ratings</u>";
+        html += "<p class=\"tab\">Overall Experience: " +  NumStars(review.overallRating)+ "</p>";
+        html += "<p class=\"tab\">Food & Drinks: " + NumStars(review.foodRating) + "</p>";
+        html += "<p class=\"tab\">Music: " + NumStars(review.musicRating) + "</p>";
+        html += "<p class=\"tab\">Equipment:" + NumStars(review.equipmentRating) + "</span></p>";
+        html += "</div>";
+        console.log(html);
         
 
     });
     
-    html += "</style> </div>";
-
    document.getElementById("reviews").innerHTML = html;
+}
+
+function NumStars(rating){
+    
+    var stars='';
+
+    for (let i = 0; i < rating; i++) {
+        stars += "<span style=\"font-size:150%;color:black;\">&starf;</span>";
+      }
+      return stars;
+
 }
 
 // use for new review submission
