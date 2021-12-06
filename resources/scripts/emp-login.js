@@ -107,7 +107,7 @@ function CheckList(json){
             var complete = event.complete;
 
 
-            event.addEventListener('click', function(ev) {
+            list.addEventListener('click', function(ev) {
                 console.log(ev.currentTarget);
                 if (ev.target.tagName === 'LI') {
                  
