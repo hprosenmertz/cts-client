@@ -7,13 +7,13 @@ function CheckList(events){
 
     var list = document.getElementById("myUL");
 
-    var assigned = 0;
-    var confirmed = 0;
-    var dos = 0;
-    var setup = 0;
-    var eip = 0;
-    var tearDown = 0;
-    var complete = 0;
+    var assigned;
+    var confirmed;
+    var dos;
+    var setup;
+    var eip;
+    var tearDown;
+    var complete;
 
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
@@ -81,14 +81,6 @@ list.addEventListener('click', function(ev) {
           complete = 0;
       }
     }
-
-    console.log(confirmed);
-    console.log(assigned);
-    console.log(dos);
-    console.log(setup);
-    console.log(eip);
-    console.log(tearDown);
-    console.log(complete);
     
   //  const thisEvent = fetch(`${postApiUrl}/${tabId}`).then((res) => res.json());
   //   thisEvent.then((event => {
@@ -130,7 +122,7 @@ list.addEventListener('click', function(ev) {
 }
 
 
-function handleOnLoad(){
+function handleHome(){
 
   fetch(postApiUrl).then(function(response){   
     return response.json();
