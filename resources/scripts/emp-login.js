@@ -14,7 +14,7 @@ function handleLogin(json2){
 
 function PostRequest(json2){
     const userApiUrl = "https://cts-api-321.herokuapp.com/api/Employee/emplogin";
-    console.log("made it here");
+
     let password = document.getElementById("password").value; //gets what user inputted 
     let username = document.getElementById("username").value;
     fetch(userApiUrl, {
@@ -46,11 +46,13 @@ function PostRequest(json2){
                 console.log("c"+ username);
                  if(employee.employeeEmail === username){
                         sessionStorage.employeeEmail = employee.employeeEmail;
+                        sessionStorage.employeeID = employee.employeeID;
                     }
                 });
            console.log("session storage");
            console.log(sessionStorage.employeeEmail);
-           window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
+          window.location.href =  "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/employee-home.html";
+        //    window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
         
         }
         
@@ -70,7 +72,6 @@ function handleHome(){
         console.log("yes this one");
       return response.json();
     }).then(function(json){
-        console.log("yes this one");
         console.log("asrjdfbenrkjg "+ sessionStorage.employeeEmail);
         var empEmail = sessionStorage.employeeEmail;
         console.log(json);
@@ -84,174 +85,184 @@ function handleHome(){
 
 
 // Add a "checked" symbol when clicking on a list item
-function CheckList(events){
-    const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
-    const postStatusUrl = "https://cts-api-321.herokuapp.com/api/Event/status";
+function CheckList(json){
+    //const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
+    const postApiUrl = "https://localhost:5001/api/Event";
+   // const postStatusUrl = "https://cts-api-321.herokuapp.com/api/Event/status";
     var list = document.querySelector('ul');
 
     var list = document.getElementById("myUL");
+    json.forEach(event => {
 
-    var assigned;
-    // var confirmed;
-    var dos;
-    var setup;
-    var eip;
-    var tearDown;
-    var complete;
+        var empID = parseInt(sessionStorage.getItem("employeeID"));
+        if(event.employeeId === empID){
+           
+            var eventId = event.eventId;
+            var assigned = event.assigned;
+            var confirmed = event.confirmed;
+            var dos = event.dayOfStatus; 
+            var setup = event.setupCompleted;
+            var eip = event.inProgress;
+            var tearDown = event.tearDown;
+            var complete = event.complete;
 
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    //console.log(ev.target.id);
-   
-    var clicked = ev.target.id;
-    var tabId = clicked.split("-").pop();
-    console.log(tabId);
 
-    ev.target.classList.toggle('checked');
-    console.log("confirmed" + confirmed);
-    if(clicked.includes("confirmed")){
-      if(ev.target.className === "checked"){
-          var confirmed = 1;
-      }
-      else{
-          var confirmed = 0;
-      }
-    }
-    if(clicked.includes("assigned")){
-      if(ev.target.className === "checked"){
-          assigned = 1;
-      }
-      else{
-          assigned = 0;
-      }
-    }
-    if(clicked.includes("dayOfStatus")){
-      if(ev.target.className === "checked"){
-          dos = 1;
-      }
-      else{
-          dos = 0;
-      }
-    }
-    if(clicked.includes("setupCompleted")){
-      if(ev.target.className === "checked"){
-          setup = 1;
-      }
-      else{
-          setup = 0;
-      }
-    }
-    if(clicked.includes("inProgress")){
-      if(ev.target.className === "checked"){
-          eip = 1;
-      }
-      else{
-          eip = 0;
-      }
-    }
-    if(clicked.includes("tearDown")){
-      if(ev.target.className === "checked"){
-          tearDown = 1;
-      }
-      else{
-          tearDown = 0;
-      }
-    }
-    if(clicked.includes("complete")){
-      if(ev.target.className === "checked"){
-          complete = 1;
-      }
-      else{
-          complete = 0;
-      }
-    }
+            list.addEventListener('click', function(ev) {
+                console.log(ev.currentTarget);
+                if (ev.target.tagName === 'LI') {
+                 
+                  var clicked = ev.currentTarget.id;
+                  var tabId = clicked.split("-").pop();
+                  console.log("clicked" +clicked);
+              
+                  ev.target.classList.toggle('checked');
 
-    console.log("adshjfbdsajhfbshjbfjalsdfbjlh");
-    console.log("confirmed after" + confirmed);
+                  if(clicked.includes("confirmed")){
+                    if(confirmed === 0){
+                        confirmed = 1;
+                    }
+                    else{
+                        confirmed = 0;
+                    }
+                  }
+                  if(clicked.includes("assigned")){
+                    if(assigned === 0){
+                        assigned = 1;
+                    }
+                    else{
+                        assigned = 0;
+                    }
+                  }
+                  if(clicked.includes("dayOfStatus")){
+                    if(dos === 0){
+                        dos = 1;
+                    }
+                    else{
+                        dos = 0;
+                    }
+                  }
+                  if(clicked.includes("setupCompleted")){
+                    if(setup === 0){
+                        setup = 1;
+                    }
+                    else{
+                        setup = 0;
+                    }
+                  }
+                  if(clicked.includes("inProgress")){
+                    if(eip === 0){
+                        eip = 1;
+                    }
+                    else{
+                        eip = 0;
+                    }
+                  }
+                  if(clicked.includes("tearDown")){
+                    if(tearDown === 0){
+                        tearDown = 1;
+                    }
+                    else{
+                        tearDown = 0;
+                    }
+                  }
+                  if(clicked.includes("complete")){
+                    if(complete === 0){
+                        complete = 1;
+                    }
+                    else{
+                        complete = 0;
+                    }
+                  }
 
-    fetch(postStatusUrl,{
-      method: "PUT",
-      headers: {
-          "Accept": 'application/json',
-          "Content-Type": 'application/json'
-      },
-      body: JSON.stringify({
-      
-        // thisEvent
-          eventId: tabId,
-          confirmed: confirmed,
-          assigned: assigned,
-          dayOfStatus: dos,
-          setupCompleted: setup,
-          inProgress: eip,
-          tearDown: tearDown,
-          complete: complete
+                  fetch(postApiUrl,{
+                    method: "PUT",
+                    headers: {
+                        "Accept": 'application/json',
+                        "Content-Type": 'application/json'
+                    },
+                    body: JSON.stringify({
+                    
+                      // thisEvent
+                        eventId: eventId,
+                        confirmed: confirmed,
+                        assigned: assigned,
+                        dayOfStatus: dos,
+                        setupCompleted: setup,
+                        inProgress: eip,
+                        tearDown: tearDown,
+                        complete: complete
+                        
+                    })
+                    
+                  })
+                    .then((response) =>{
+                   
+                        // document.getElementById("myUL")="";
+              
+                        handleHome();
+                    })
+                }
+              }, false);
+
+        }
     })
-    })
-      .then(function(response){
-          console.log("variables");
-        // return response.json();
-    })
-  }
-}, false);
-
 }
-
-
-
-
 
 
 
 //method to show all events for employee
 function DisplayEvents(json){
 
-  let html = "<body>";
-  var list = document.getElementById("myUL")
+  let html = "";
+  var list = document.getElementById("myUL");
 
   json.forEach(event => {
-      html = "<div class=\"box\">";
+
+    var empID = parseInt(sessionStorage.getItem("employeeID"));
+    if(empID === event.employeeId){
+
+      html += "<div class=\"box\">";
       html += "<div id=\"myDIV\" class=\"header\">";
-      html += "<h3 style=\"margin:5px\">" + event.eventId + "</h3>";
+      html += "<h6 style=\"margin:5px\"> Event for: " + event.clientEmail + "</h6>";
       html += "</div>";
-      html += "<ul id=\"myUL\">";
-      if(event.confirmed){
+    //   html += "<ul id=\"myUL\">";
+      if(event.confirmed === 1){
         html += "<li id=\"confirmed-" + event.eventId + "\" class=\"checked\">Confirmed</li>";
       }
       else{
         html += "<li id=\"confirmed-" + event.eventId + "\">Confirmed</li>";
       }
-      if(event.assigned){
+      if(event.assigned === 1){
         html += "<li id=\"assigned-" + event.eventId + "\" class=\"checked\">Assigned</li>";
       }
       else{
         html += "<li id=\"assigned-" + event.eventId + "\">Assigned</li>";
       }
-      if(event.dayOfStatus){
+      if(event.dayOfStatus === 1){
         html += "<li id=\"dayOfStatus-" + event.eventId + "\" class=\"checked\">\"Day of\" Status</li>";
       }
       else{
         html += "<li id=\"dayOfStatus-" + event.eventId + "\">\"Day of\" Status</li>";
       }
-      if(event.setupCompleted){
+      if(event.setupCompleted === 1){
         html += "<li id=\"setupCompleted-" + event.eventId + "\" class=\"checked\">Setup Completed</li>";
       }
       else{
         html += "<li id=\"setupCompleted-" + event.eventId + "\">Setup Completed</li>";
       }
-      if(event.inProgress){
+      if(event.inProgress === 1){
         html += "<li id=\"inProgress-" + event.eventId + "\" class=\"checked\">Event In Progress</li>";
       }
       else{
         html += "<li id=\"inProgress-" + event.eventId + "\">Event In Progress</li>";
       }
-      if(event.tearDown){
+      if(event.tearDown === 1){
         html += "<li id=\"tearDown-" + event.eventId + "\" class=\"checked\">Tear Down</li>";
       }
       else{
         html += "<li id=\"tearDown-" + event.eventId + "\">Tear Down</li>";
       }
-      if(event.complete){
+      if(event.complete === 1){
         html += "<li id=\"complete-" + event.eventId + "\" class=\"checked\">Complete</li>";
       }
       else{
@@ -260,10 +271,11 @@ function DisplayEvents(json){
 
       html += "</ul>";
       html += "</div>";
+    }
  
   });
-  
-  html += "</body>";
+
+
   document.getElementById("myUL").innerHTML = html;
 
   // document.getElementById("prevposts").innerHTML = html;
