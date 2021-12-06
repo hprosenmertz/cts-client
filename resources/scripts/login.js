@@ -122,25 +122,26 @@ function loadEventData(){
 };
 
 function displayEvent(json, clientEmail){
-    let html = "<div class =\"container\">";
+    // let html = "<div class =\"container\">";
     // console.log("review.clientEmail" + review.clientEmail);
  
      json.forEach(event => {
-         console.log("event.clientEmail" + event.clientEmail);
-     console.log("clientEmail" + clientEmail);
+    //      console.log("event.clientEmail" + event.clientEmail);
+    //  console.log("clientEmail" + clientEmail);
          if(event.clientEmail === clientEmail){
-             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +event.eventId +"</label>";
-             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +event.clientId +"</label>";
-             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Package:" +event.package +"</label>";
-             html += "<p></p";
+            //  html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +event.eventId +"</label>";
+            //  html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +event.clientId +"</label>";
+            //  html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Package:" +event.package +"</label>";
+            //  html += "<p></p";
+            sessionStorage.eventId = event.eventId;
          }
-         console.log(event.eventId + "eventId");
+        //  console.log(event.eventId + "eventId");
  
          
      });
      
-     html += "</div>";
-     document.getElementById("reviews").innerHTML = html;
+    //  html += "</div>";
+    //  document.getElementById("reviews").innerHTML = html;
 }
 
 
@@ -157,6 +158,7 @@ function loadCustReview(){
         console.log("dasjfnadshjkf 22" + clientEmail);
         var id = GetClientData();
         console.log("client id:" + id);
+        displayEvent();
         displayIDs(json, id);
         loadEventData();
   

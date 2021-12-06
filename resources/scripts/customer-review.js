@@ -159,7 +159,6 @@ function AddReview(){
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            
             foodRating: food,
             musicRating: music,
             equipmentRating: equipment,
@@ -176,5 +175,5 @@ function AddReview(){
         document.getElementById("overall").value = "";
         document.getElementById("text").value = "";
     })
-    window.location.href = "https://cts-client.herokuapp.com/display-cust-reviews.html";
+    window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
 }
