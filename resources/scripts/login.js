@@ -63,13 +63,13 @@ function PostRequest(json2){
            console.log(sessionStorage.clientEmail);
             // clientInfo = clientID;
             // localStorage.setItem("clientInfo", clientInfo);
-            window.location.href = "file:///Users/treyrush/Desktop/cts/cts-client/customer-review.html"; 
+           // window.location.href = "file:///Users/treyrush/Desktop/cts/cts-client/customer-review.html"; 
         
         console.log("this one right here");
   
 
             console.log("info2: " + clientInfo);
-          //   window.location.href = "https://cts-client.herokuapp.com/customer-review.html";
+             window.location.href = "https://cts-client.herokuapp.com/customer-review.html";
         }
         
     })
@@ -128,16 +128,6 @@ function loadEventData(){
 function displayEvent(json, clientEmail){
     let html = "<div class =\"container\">";
     // console.log("review.clientEmail" + review.clientEmail);
-     console.log("MADE IT2");
- 
-     // json.display(review => {
-     //     if(review.clientEmail === clientEmail){
-     //         html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +review.eventId +"</label>";
-     //         html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +review.clientId +"</label>";
-     //         html += "<p></p";
-     //     }
-     // }
-     // )
  
      json.forEach(event => {
          console.log("event.clientEmail" + event.clientEmail);
@@ -180,9 +170,9 @@ function loadCustReview(){
 };
 
 function GetClientData(){
-    console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
-   //const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
-    const apiUrl = "https://localhost:5001/api/Client";
+  //  console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
+   const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    // const apiUrl = "https://localhost:5001/api/Client";
     fetch(apiUrl).then(function(response){   
         return response.json();
     }).then(function(json){

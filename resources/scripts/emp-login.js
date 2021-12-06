@@ -36,21 +36,16 @@ function PostRequest(json2){
             alert("Success!");
             localStorage.setItem("employee", num);
            
-           console.log(username);
           
            json2.forEach(employee => {
 
-                console.log("this one");
-                console.log("a"+ employee.employeeID);
-                console.log("b"+ employee.employeeEmail);
-                console.log("c"+ username);
+      
                  if(employee.employeeEmail === username){
                         sessionStorage.employeeEmail = employee.employeeEmail;
                         sessionStorage.employeeID = employee.employeeID;
                     }
                 });
-           console.log("session storage");
-           console.log(sessionStorage.employeeEmail);
+
           window.location.href =  "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/employee-home.html";
         //    window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
         
@@ -69,16 +64,20 @@ function handleHome(){
     const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
     //const postStatusUrl = "https://cts-api-321.herokuapp.com/api/Event/status";
     fetch(postApiUrl).then(function(response){   
-        console.log("yes this one");
+ 
       return response.json();
     }).then(function(json){
-        console.log("asrjdfbenrkjg "+ sessionStorage.employeeEmail);
+
         var empEmail = sessionStorage.employeeEmail;
         console.log(json);
         DisplayEvents(json);
         CheckList(json);
     })
     
+  }
+
+  function CheckBoxes(){
+
   }
 
 
@@ -92,6 +91,7 @@ function CheckList(json){
     var list = document.querySelector('ul');
 
     var list = document.getElementById("myUL");
+    
     json.forEach(event => {
 
         var empID = parseInt(sessionStorage.getItem("employeeID"));
@@ -108,12 +108,10 @@ function CheckList(json){
 
 
             list.addEventListener('click', function(ev) {
-                console.log(ev.currentTarget);
                 if (ev.target.tagName === 'LI') {
                  
-                  var clicked = ev.currentTarget.id;
+                  var clicked = ev.target.id;
                   var tabId = clicked.split("-").pop();
-                  console.log("clicked" +clicked);
               
                   ev.target.classList.toggle('checked');
 
@@ -174,6 +172,7 @@ function CheckList(json){
                     }
                   }
 
+                  
                   fetch(postApiUrl,{
                     method: "PUT",
                     headers: {
@@ -196,7 +195,7 @@ function CheckList(json){
                     
                   })
                     .then((response) =>{
-                   
+                  
                         // document.getElementById("myUL")="";
               
                         handleHome();
@@ -208,6 +207,77 @@ function CheckList(json){
     })
 }
 
+function DisplayList(){
+
+    let html = "";
+  var list = document.getElementById("myUL");
+
+  
+  json.forEach(event => {
+
+    var empID = parseInt(sessionStorage.getItem("employeeID"));
+    if(empID === event.employeeId){
+
+      html += "<div class=\"box\">";
+      html += "<div id=\"myDIV\" class=\"header\">";
+      html += "<h6 style=\"margin:5px\"> Event for: " + event.clientEmail + "</h6>";
+      html += "</div>";
+    //   html += "<ul id=\"myUL\">";
+      if(event.confirmed === 1){
+        html += "<li id=\"confirmed-" + event.eventId + "\" class=\"checked\">Confirmed</li>";
+      }
+      else{
+        html += "<li id=\"confirmed-" + event.eventId + "\">Confirmed</li>";
+      }
+      if(event.assigned === 1){
+        html += "<li id=\"assigned-" + event.eventId + "\" class=\"checked\">Assigned</li>";
+      }
+      else{
+        html += "<li id=\"assigned-" + event.eventId + "\">Assigned</li>";
+      }
+      if(event.dayOfStatus === 1){
+        html += "<li id=\"dayOfStatus-" + event.eventId + "\" class=\"checked\">\"Day of\" Status</li>";
+      }
+      else{
+        html += "<li id=\"dayOfStatus-" + event.eventId + "\">\"Day of\" Status</li>";
+      }
+      if(event.setupCompleted === 1){
+        html += "<li id=\"setupCompleted-" + event.eventId + "\" class=\"checked\">Setup Completed</li>";
+      }
+      else{
+        html += "<li id=\"setupCompleted-" + event.eventId + "\">Setup Completed</li>";
+      }
+      if(event.inProgress === 1){
+        html += "<li id=\"inProgress-" + event.eventId + "\" class=\"checked\">Event In Progress</li>";
+      }
+      else{
+        html += "<li id=\"inProgress-" + event.eventId + "\">Event In Progress</li>";
+      }
+      if(event.tearDown === 1){
+        html += "<li id=\"tearDown-" + event.eventId + "\" class=\"checked\">Tear Down</li>";
+      }
+      else{
+        html += "<li id=\"tearDown-" + event.eventId + "\">Tear Down</li>";
+      }
+      if(event.complete === 1){
+        html += "<li id=\"complete-" + event.eventId + "\" class=\"checked\">Complete</li>";
+      }
+      else{
+        html += "<li id=\"complete-" + event.eventId + "\">Complete</li>";
+      }
+
+      html += "</ul>";
+      html += "</div>";
+    }
+ 
+  });
+
+
+  document.getElementById("myUL").innerHTML = html;
+
+    
+}
+
 
 
 //method to show all events for employee
@@ -216,6 +286,7 @@ function DisplayEvents(json){
   let html = "";
   var list = document.getElementById("myUL");
 
+  
   json.forEach(event => {
 
     var empID = parseInt(sessionStorage.getItem("employeeID"));
