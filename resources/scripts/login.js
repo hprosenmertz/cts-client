@@ -63,7 +63,7 @@ function PostRequest(json2){
            console.log(sessionStorage.clientEmail);
             // clientInfo = clientID;
             // localStorage.setItem("clientInfo", clientInfo);
-            window.location.href = "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/customer-review.html"; 
+            window.location.href = "file:///Users/treyrush/Desktop/cts/cts-client/customer-review.html"; 
         
         console.log("this one right here");
   
@@ -104,6 +104,59 @@ function fadeIn(el, display) {
 };
 
 
+function loadEventData(){
+    
+    fetch("https://cts-api-321.herokuapp.com/api/Event")
+    .then(function(response){
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+       // var clientInfo2 = localStorage.getItem("clientInfo");
+        console.log("asrjdfbenrkjg "+ sessionStorage.clientEmail);
+        var clientEmail = sessionStorage.clientEmail;
+        console.log("dasjfnadshjkf 22" + clientEmail);
+        var id = GetClientData();
+        console.log("client id:" + id);
+        console.log("MADE IT");
+        //displayEvent(json, clientEmail);
+  
+    }).catch(function(error){
+        console.log(error);
+    });
+};
+
+function displayEvent(json, clientEmail){
+    let html = "<div class =\"container\">";
+    // console.log("review.clientEmail" + review.clientEmail);
+     console.log("MADE IT2");
+ 
+     // json.display(review => {
+     //     if(review.clientEmail === clientEmail){
+     //         html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +review.eventId +"</label>";
+     //         html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +review.clientId +"</label>";
+     //         html += "<p></p";
+     //     }
+     // }
+     // )
+ 
+     json.forEach(event => {
+         console.log("event.clientEmail" + event.clientEmail);
+     console.log("clientEmail" + clientEmail);
+         if(event.clientEmail === clientEmail){
+             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +event.eventId +"</label>";
+             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +event.clientId +"</label>";
+             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Package:" +event.package +"</label>";
+             html += "<p></p";
+         }
+         console.log(event.eventId + "eventId");
+ 
+         
+     });
+     
+     html += "</div>";
+     document.getElementById("reviews").innerHTML = html;
+}
+
 
 function loadCustReview(){
     
@@ -117,8 +170,9 @@ function loadCustReview(){
         var clientEmail = sessionStorage.clientEmail;
         console.log("dasjfnadshjkf 22" + clientEmail);
         var id = GetClientData();
-        console.log("ckient id:" + id);
+        console.log("client id:" + id);
         displayIDs(json, clientEmail);
+        loadEventData();
   
     }).catch(function(error){
         console.log(error);
@@ -127,7 +181,7 @@ function loadCustReview(){
 
 function GetClientData(){
     console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
-   // const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+   //const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
     const apiUrl = "https://localhost:5001/api/Client";
     fetch(apiUrl).then(function(response){   
         return response.json();
@@ -164,12 +218,23 @@ function displayIDs(json, clientEmail){
    // console.log("review.clientEmail" + review.clientEmail);
     console.log("clientEmail" + clientEmail);
 
+    // json.display(review => {
+    //     if(review.clientEmail === clientEmail){
+    //         html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +review.eventId +"</label>";
+    //         html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +review.clientId +"</label>";
+    //         html += "<p></p";
+    //     }
+    // }
+    // )
+
     json.forEach(review => {
         console.log("review.clientEmail" + review.clientEmail);
     console.log("clientEmail" + clientEmail);
         if(review.clientEmail === clientEmail){
             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +review.eventId +"</label>";
-            html += "<p> Show Up </p";
+            html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +review.clientId +"</label>";
+            html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Package:" +review.package +"</label>";
+            html += "<p></p";
         }
         console.log(review.eventId + "eventId");
 
