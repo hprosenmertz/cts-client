@@ -1,4 +1,5 @@
 const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
+const postStatusUrl = "https://cts-api-321.herokuapp.com/api/Event/status";
 // Add a "checked" symbol when clicking on a list item
 function CheckList(events){
 
@@ -26,58 +27,58 @@ list.addEventListener('click', function(ev) {
 
     if(clicked.includes("confirmed")){
       if(ev.target.className === "checked"){
-          confirmed = true;
+          confirmed = 1;
       }
       else{
-          confirmed = false;
+          confirmed = 0;
       }
     }
     if(clicked.includes("assigned")){
       if(ev.target.className === "checked"){
-          assigned = true;
+          assigned = 1;
       }
       else{
-          assigned = false;
+          assigned = 0;
       }
     }
     if(clicked.includes("dayOfStatus")){
       if(ev.target.className === "checked"){
-          dos = true;
+          dos = 1;
       }
       else{
-          dos = false;
+          dos = 0;
       }
     }
     if(clicked.includes("setupCompleted")){
       if(ev.target.className === "checked"){
-          setup = true;
+          setup = 1;
       }
       else{
-          setup = false;
+          setup = 0;
       }
     }
     if(clicked.includes("inProgress")){
       if(ev.target.className === "checked"){
-          eip = true;
+          eip = 1;
       }
       else{
-          eip = false;
+          eip = 0;
       }
     }
     if(clicked.includes("tearDown")){
       if(ev.target.className === "checked"){
-          tearDown = true;
+          tearDown = 1;
       }
       else{
-          tearDown = false;
+          tearDown = 0;
       }
     }
     if(clicked.includes("complete")){
       if(ev.target.className === "checked"){
-          complete = true;
+          complete = 1;
       }
       else{
-          complete = false;
+          complete = 0;
       }
     }
     
@@ -92,7 +93,7 @@ list.addEventListener('click', function(ev) {
   //     event.complete = complete;
   //   }))
 
-    fetch(postApiUrl,{
+    fetch(postStatusUrl,{
       method: "PUT",
       headers: {
           "Accept": 'application/json',
