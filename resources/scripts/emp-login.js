@@ -85,8 +85,8 @@ function handleHome(){
 
 // Add a "checked" symbol when clicking on a list item
 function CheckList(json){
-    //const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
-    const postApiUrl = "https://localhost:5001/api/Event";
+    const postApiUrl = "https://cts-api-321.herokuapp.com/api/Event/";
+    //const postApiUrl = "https://localhost:5001/api/Event";
    // const postStatusUrl = "https://cts-api-321.herokuapp.com/api/Event/status";
     var list = document.querySelector('ul');
 
