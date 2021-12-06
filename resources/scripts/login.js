@@ -171,7 +171,7 @@ function loadCustReview(){
         console.log("dasjfnadshjkf 22" + clientEmail);
         var id = GetClientData();
         console.log("client id:" + id);
-        displayIDs(json, clientEmail);
+        displayIDs(json, id);
         loadEventData();
   
     }).catch(function(error){
@@ -181,8 +181,8 @@ function loadCustReview(){
 
 function GetClientData(){
     console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
-   //const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
-    const apiUrl = "https://localhost:5001/api/Client";
+   const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
+    //const apiUrl = "https://localhost:5001/api/Client";
     fetch(apiUrl).then(function(response){   
         return response.json();
     }).then(function(json){
@@ -212,11 +212,11 @@ function HandleOnSubmit(){
 
 
 
-function displayIDs(json, clientEmail){
+function displayIDs(json, id){
 
     let html = "<div class =\"container\">";
    // console.log("review.clientEmail" + review.clientEmail);
-    console.log("clientEmail" + clientEmail);
+    //console.log("clientEmail" + clientEmail);
 
     // json.display(review => {
     //     if(review.clientEmail === clientEmail){
@@ -226,11 +226,12 @@ function displayIDs(json, clientEmail){
     //     }
     // }
     // )
+    
 
     json.forEach(review => {
-        console.log("review.clientEmail" + review.clientEmail);
+        //console.log("review.clientEmail" + review.clientEmail);
     console.log("clientEmail" + clientEmail);
-        if(review.clientEmail === clientEmail){
+        if(review.clientId === id){
             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Event ID:" +review.eventId +"</label>";
             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Client ID:" +review.clientId +"</label>";
             html += "<label for=\"exampleFormControlInput1\" class=\"form-label\">Package:" +review.package +"</label>";
