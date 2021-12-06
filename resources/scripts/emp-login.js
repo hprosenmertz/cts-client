@@ -38,16 +38,14 @@ function PostRequest(json2){
            
           
            json2.forEach(employee => {
-
-      
                  if(employee.employeeEmail === username){
                         sessionStorage.employeeEmail = employee.employeeEmail;
                         sessionStorage.employeeID = employee.employeeID;
                     }
                 });
 
-          window.location.href =  "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/employee-home.html";
-        //    window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
+          //window.location.href =  "/Users/hannarosenmertz/Desktop/Source/Repos/cts/client/employee-home.html";
+           window.location.href = "https://cts-client.herokuapp.com/employee-home.html";
         
         }
         
