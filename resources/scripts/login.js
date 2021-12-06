@@ -170,27 +170,19 @@ function loadCustReview(){
 };
 
 function GetClientData(){
-<<<<<<< HEAD
-  //  console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
-   const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
-    // const apiUrl = "https://localhost:5001/api/Client";
-=======
     console.log("dasjfnadshjkf 21" + sessionStorage.clientEmail);
    const apiUrl = "https://cts-api-321.herokuapp.com/api/Client"; 
     //const apiUrl = "https://localhost:5001/api/Client";
->>>>>>> ddf4e0f64e3b62cbf3cf30f3dd0acd216fb8d8ca
     fetch(apiUrl).then(function(response){   
         return response.json();
     }).then(function(json){
         console.log(json);
         var id = GetClientID(json);
-       
-    
     })
 }
 
 function GetClientID(json){
-    var json = GetClientData();
+    // var json = GetClientData();
     var id;
     console.log("this one yes" + sessionStorage.clientEmail);
     json.forEach(client => {
