@@ -123,10 +123,16 @@ function displayIDs(json){
 
     let html = "<div class =\"container\">";
 
+
+    // json.display(html += "<p><b>ID: </b>" + review.eventId + "</p>",
+    // html += "<p><b>Client ID: </b>" + review.clientId + "</p>",
+    // html += "<p><b>Package: </b>" + review.package + "</p>"
+    // );
+
     json.forEach(review => {
         html += "<p><b>ID: </b>" + review.eventId + "</p>";
-        html += "<p><b>Client ID: </b>" + review.eventId + "</p>";
-            html += "<p><b>Package: </b>" + review.eventId + "</p>";
+        html += "<p><b>Client ID: </b>" + review.clientId + "</p>";
+        html += "<p><b>Package: </b>" + review.package + "</p>";
         
     });
     
